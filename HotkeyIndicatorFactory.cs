@@ -17,7 +17,7 @@ namespace LiveSplit.UI.Components
 
         public string Description
         {
-            get { return ""; }
+            get { return "Shows whether global hotkeys are on or off. Green indicates that global hotkeys are on, while red indicates off."; }
         }
 
         public ComponentCategory Category
