@@ -136,5 +136,9 @@ namespace LiveSplit
                     invalidator.Invalidate(-1, 0, width + 2, height);
             }
         }
+
+        public void Dispose()
+        {
+        }
     }
 }
