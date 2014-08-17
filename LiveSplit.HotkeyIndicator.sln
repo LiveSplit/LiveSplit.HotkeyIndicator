@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiveSplit.HotkeyIndicator", "..\LiveSplit.HotkeyIndicator.csproj", "{9879EFC5-348F-4240-A7A8-CE1CB6F252A3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiveSplit.HotkeyIndicator", "LiveSplit.HotkeyIndicator.csproj", "{9879EFC5-348F-4240-A7A8-CE1CB6F252A3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
