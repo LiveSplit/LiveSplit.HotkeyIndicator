@@ -115,12 +115,6 @@ namespace LiveSplit
             get { return null; }
         }
 
-
-        public void RenameComparison(string oldName, string newName)
-        {
-        }
-
-
         public void Update(IInvalidator invalidator, LiveSplitState state, float width, float height, LayoutMode mode)
         {
             CurrentColor = state.Settings.GlobalHotkeysEnabled ? EnabledColor : DisabledColor;
