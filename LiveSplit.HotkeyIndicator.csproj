@@ -59,6 +59,12 @@
     <Compile Include="HotkeyIndicator.cs" />
     <Compile Include="HotkeyIndicatorFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="HotkeyIndicatorSettings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="HotkeyIndicatorSettings.Designer.cs">
+      <DependentUpon>HotkeyIndicatorSettings.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\LiveSplit.Core\LiveSplit.Core.csproj">
@@ -71,6 +77,11 @@
       <Name>UpdateManager</Name>
       <Private>False</Private>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="HotkeyIndicatorSettings.resx">
+      <DependentUpon>HotkeyIndicatorSettings.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

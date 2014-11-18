@@ -21,8 +21,10 @@ namespace LiveSplit
 
         public Color CurrentColor { get; set; }
 
-        protected Color EnabledColor = Color.FromArgb(41, 204, 84);
-        protected Color DisabledColor = Color.FromArgb(204, 55, 41);
+        /*protected Color EnabledColor = Color.FromArgb(41, 204, 84);
+        protected Color DisabledColor = Color.FromArgb(204, 55, 41);*/
+
+        public HotkeyIndicatorSettings Settings { get; set; }
 
         public GraphicsCache Cache { get; set; }
 
@@ -50,6 +52,7 @@ namespace LiveSplit
         {
             Line = new LineComponent(3, Color.White);
             Cache = new GraphicsCache();
+            Settings = new HotkeyIndicatorSettings();
         }
 
         public void DrawVertical(Graphics g, LiveSplitState state, float width, Region clipRegion)
@@ -96,17 +99,18 @@ namespace LiveSplit
 
         public Control GetSettingsControl(LayoutMode mode)
         {
-            return null;
+            return Settings;
         }
 
         public void SetSettings(System.Xml.XmlNode settings)
         {
+            Settings.SetSettings(settings);
         }
 
 
         public System.Xml.XmlNode GetSettings(System.Xml.XmlDocument document)
         {
-            return document.CreateElement("HotkeyIndicatorSettings");
+            return Settings.GetSettings(document);
         }
 
         
@@ -117,7 +121,7 @@ namespace LiveSplit
 
         public void Update(IInvalidator invalidator, LiveSplitState state, float width, float height, LayoutMode mode)
         {
-            CurrentColor = state.Settings.GlobalHotkeysEnabled ? EnabledColor : DisabledColor;
+            CurrentColor = state.Settings.GlobalHotkeysEnabled ? Settings.HotkeysOnColor : Settings.HotkeysOffColor;
 
             Cache.Restart();
             Cache["IndicatorColor"] = CurrentColor.ToArgb();
