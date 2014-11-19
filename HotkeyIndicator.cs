@@ -21,9 +21,6 @@ namespace LiveSplit
 
         public Color CurrentColor { get; set; }
 
-        /*protected Color EnabledColor = Color.FromArgb(41, 204, 84);
-        protected Color DisabledColor = Color.FromArgb(204, 55, 41);*/
-
         public HotkeyIndicatorSettings Settings { get; set; }
 
         public GraphicsCache Cache { get; set; }
