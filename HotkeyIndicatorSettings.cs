@@ -36,40 +36,18 @@ namespace LiveSplit.UI.Components
             btnColor2.DataBindings.Add("BackColor", this, "HotkeysOffColor", false, DataSourceUpdateMode.OnPropertyChanged);
         }
 
-        private Color ParseColor(XmlElement colorElement)
-        {
-            return Color.FromArgb(Int32.Parse(colorElement.InnerText, NumberStyles.HexNumber));
-        }
-
-        private XmlElement ToElement(XmlDocument document, Color color, string name)
-        {
-            var element = document.CreateElement(name);
-            element.InnerText = color.ToArgb().ToString("X8");
-            return element;
-        }
-
-        private T ParseEnum<T>(XmlElement element)
-        {
-            return (T)Enum.Parse(typeof(T), element.InnerText);
-        }
-
         public void SetSettings(XmlNode node)
         {
             var element = (XmlElement)node;
-            Version version;
-            if (element["Version"] != null)
-                version = Version.Parse(element["Version"].InnerText);
-            else
-                version = new Version(1, 0, 0, 0);
-            HotkeysOnColor = ParseColor(element["HotkeysOnColor"]);
-            HotkeysOffColor = ParseColor(element["HotkeysOffColor"]);
+            HotkeysOnColor = SettingsHelper.ParseColor(element["HotkeysOnColor"]);
+            HotkeysOffColor = SettingsHelper.ParseColor(element["HotkeysOffColor"]);
         }
 
         public XmlNode GetSettings(XmlDocument document)
         {
             var parent = document.CreateElement("Settings");
-            parent.AppendChild(ToElement(document, HotkeysOnColor, "HotkeysOnColor"));
-            parent.AppendChild(ToElement(document, HotkeysOffColor, "HotkeysOffColor"));
+            parent.AppendChild(SettingsHelper.ToElement(document, HotkeysOnColor, "HotkeysOnColor"));
+            parent.AppendChild(SettingsHelper.ToElement(document, HotkeysOffColor, "HotkeysOffColor"));
             return parent;
         }
 
@@ -83,18 +61,5 @@ namespace LiveSplit.UI.Components
             button.BackColor = picker.SelectedColor;
         }
 
-        private XmlElement ToElement<T>(XmlDocument document, String name, T value)
-        {
-            var element = document.CreateElement(name);
-            element.InnerText = value.ToString();
-            return element;
-        }
-
-        private XmlElement ToElement(XmlDocument document, String name, float value)
-        {
-            var element = document.CreateElement(name);
-            element.InnerText = value.ToString(CultureInfo.InvariantCulture);
-            return element;
-        }
     }
 }
