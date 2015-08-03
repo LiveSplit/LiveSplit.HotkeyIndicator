@@ -79,6 +79,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="HotkeyIndicatorSettings.ja-JP.resx">
+      <DependentUpon>HotkeyIndicatorSettings.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="HotkeyIndicatorSettings.resx">
       <DependentUpon>HotkeyIndicatorSettings.cs</DependentUpon>
     </EmbeddedResource>
