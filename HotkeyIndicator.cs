@@ -129,5 +129,10 @@ namespace LiveSplit
         public void Dispose()
         {
         }
+
+        public int GetSettingsHashCode()
+        {
+            return Settings.GetSettingsHashCode();
+        }
     }
 }

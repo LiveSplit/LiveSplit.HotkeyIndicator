@@ -37,9 +37,19 @@ namespace LiveSplit.UI.Components
         public XmlNode GetSettings(XmlDocument document)
         {
             var parent = document.CreateElement("Settings");
-            parent.AppendChild(SettingsHelper.ToElement(document, HotkeysOnColor, "HotkeysOnColor"));
-            parent.AppendChild(SettingsHelper.ToElement(document, HotkeysOffColor, "HotkeysOffColor"));
+            CreateSettingsNode(document, parent);
             return parent;
+        }
+
+        public int GetSettingsHashCode()
+        {
+            return CreateSettingsNode(null, null);
+        }
+
+        private int CreateSettingsNode(XmlDocument document, XmlElement parent)
+        {
+            return SettingsHelper.CreateSetting(document, parent, "HotkeysOnColor", HotkeysOnColor) ^
+            SettingsHelper.CreateSetting(document, parent, "HotkeysOffColor", HotkeysOffColor);
         }
 
         private void ColorButtonClick(object sender, EventArgs e)
