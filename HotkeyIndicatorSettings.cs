@@ -10,7 +10,7 @@ namespace LiveSplit.UI.Components
         public Color HotkeysOnColor { get; set; }
         public Color HotkeysOffColor { get; set; }
         public GradientType BackgroundGradient { get; set; }
-        public String GradientString
+        public string GradientString
         {
             get { return BackgroundGradient.ToString(); }
             set { BackgroundGradient = (GradientType)Enum.Parse(typeof(GradientType), value); }

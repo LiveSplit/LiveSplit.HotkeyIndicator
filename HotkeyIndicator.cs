@@ -11,10 +11,10 @@ namespace LiveSplit
 {
     public class HotkeyIndicator : IComponent
     {
-        public float PaddingTop { get { return 0f; } }
-        public float PaddingLeft { get { return 0f; } }
-        public float PaddingBottom { get { return 0f; } }
-        public float PaddingRight { get { return 0f; } }
+        public float PaddingTop => 0f;
+        public float PaddingLeft => 0f;
+        public float PaddingBottom => 0f;
+        public float PaddingRight => 0f;
 
         protected LineComponent Line { get; set; }
 
@@ -24,25 +24,13 @@ namespace LiveSplit
 
         public GraphicsCache Cache { get; set; }
 
-        public float VerticalHeight
-        {
-            get { return 3f; }
-        }
+        public float VerticalHeight => 3f;
 
-        public float MinimumWidth
-        {
-            get { return 0; }
-        }
+        public float MinimumWidth => 0f;
 
-        public float HorizontalWidth
-        {
-            get { return 3f; }
-        }
+        public float HorizontalWidth => 3f;
 
-        public float MinimumHeight
-        {
-            get { return 0; }
-        }
+        public float MinimumHeight => 0f;
 
         public HotkeyIndicator()
         {
@@ -87,11 +75,7 @@ namespace LiveSplit
             g.SmoothingMode = oldMode;
         }
 
-        public string ComponentName
-        {
-            get { return "Hotkey Indicator"; }
-        }
-
+        public string ComponentName => "Hotkey Indicator";
 
         public Control GetSettingsControl(LayoutMode mode)
         {
@@ -110,10 +94,7 @@ namespace LiveSplit
         }
 
         
-        public IDictionary<string, Action> ContextMenuControls
-        {
-            get { return null; }
-        }
+        public IDictionary<string, Action> ContextMenuControls => null;
 
         public void Update(IInvalidator invalidator, LiveSplitState state, float width, float height, LayoutMode mode)
         {
@@ -130,9 +111,6 @@ namespace LiveSplit
         {
         }
 
-        public int GetSettingsHashCode()
-        {
-            return Settings.GetSettingsHashCode();
-        }
+        public int GetSettingsHashCode() => Settings.GetSettingsHashCode();
     }
 }
