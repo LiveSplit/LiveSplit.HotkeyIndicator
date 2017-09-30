@@ -98,7 +98,7 @@ namespace LiveSplit
 
         public void Update(IInvalidator invalidator, LiveSplitState state, float width, float height, LayoutMode mode)
         {
-            CurrentColor = state.Settings.GlobalHotkeysEnabled ? Settings.HotkeysOnColor : Settings.HotkeysOffColor;
+            CurrentColor = state.Settings.HotkeyProfiles[state.CurrentHotkeyProfile].GlobalHotkeysEnabled ? Settings.HotkeysOnColor : Settings.HotkeysOffColor;
 
             Cache.Restart();
             Cache["IndicatorColor"] = CurrentColor.ToArgb();
