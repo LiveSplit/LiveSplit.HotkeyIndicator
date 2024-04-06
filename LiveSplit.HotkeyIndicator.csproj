@@ -17,8 +17,6 @@
 
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
-
-    <Reference Include="..\..\Libs\WinForms Color Picker\WinFormsColor.dll" />
   </ItemGroup>
 
 </Project>
