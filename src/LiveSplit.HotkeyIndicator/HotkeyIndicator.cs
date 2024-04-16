@@ -24,11 +24,11 @@ namespace LiveSplit
 
         public GraphicsCache Cache { get; set; }
 
-        public float VerticalHeight => 3f;
+        public float VerticalHeight => Settings.IndicatorHeight;
 
         public float MinimumWidth => 0f;
 
-        public float HorizontalWidth => 3f;
+        public float HorizontalWidth => Settings.IndicatorWidth;
 
         public float MinimumHeight => 0f;
 
@@ -48,9 +48,9 @@ namespace LiveSplit
             g.Clip = new Region();
             Line.LineColor = CurrentColor;
             var scale = g.Transform.Elements.First();
-            var newHeight = Math.Max((int)(3f * scale + 0.5f), 1) / scale;
+            var newHeight = Math.Max((int)(Settings.IndicatorHeight * scale + 0.5f), 1) / scale;
             Line.VerticalHeight = newHeight;
-            g.TranslateTransform(0, (3f - newHeight) / 2f);
+            g.TranslateTransform(0, (Settings.IndicatorHeight - newHeight) / 2f);
             Line.DrawVertical(g, state, width, clipRegion);
             g.Clip = oldClip;
             g.Transform = oldMatrix;
@@ -66,8 +66,8 @@ namespace LiveSplit
             g.Clip = new Region();
             Line.LineColor = CurrentColor;
             var scale = g.Transform.Elements.First();
-            var newWidth = Math.Max((int)(3f * scale + 0.5f), 1) / scale;
-            g.TranslateTransform((3f - newWidth) / 2f, 0);
+            var newWidth = Math.Max((int)(Settings.IndicatorWidth * scale + 0.5f), 1) / scale;
+            g.TranslateTransform((Settings.IndicatorWidth - newWidth) / 2f, 0);
             Line.HorizontalWidth = newWidth;
             Line.DrawHorizontal(g, state, height, clipRegion);
             g.Clip = oldClip;
@@ -79,6 +79,7 @@ namespace LiveSplit
 
         public Control GetSettingsControl(LayoutMode mode)
         {
+            Settings.Mode = mode;
             return Settings;
         }
 
