@@ -42,14 +42,14 @@ public class HotkeyIndicator : IComponent
 
     public void DrawVertical(Graphics g, LiveSplitState state, float width, Region clipRegion)
     {
-        var oldClip = g.Clip;
-        var oldMatrix = g.Transform;
-        var oldMode = g.SmoothingMode;
+        Region oldClip = g.Clip;
+        System.Drawing.Drawing2D.Matrix oldMatrix = g.Transform;
+        System.Drawing.Drawing2D.SmoothingMode oldMode = g.SmoothingMode;
         g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.Default;
         g.Clip = new Region();
         Line.LineColor = CurrentColor;
-        var scale = g.Transform.Elements.First();
-        var newHeight = Math.Max((int)((Settings.IndicatorHeight * scale) + 0.5f), 1) / scale;
+        float scale = g.Transform.Elements.First();
+        float newHeight = Math.Max((int)((Settings.IndicatorHeight * scale) + 0.5f), 1) / scale;
         Line.VerticalHeight = newHeight;
         g.TranslateTransform(0, (Settings.IndicatorHeight - newHeight) / 2f);
         Line.DrawVertical(g, state, width, clipRegion);
@@ -60,14 +60,14 @@ public class HotkeyIndicator : IComponent
 
     public void DrawHorizontal(Graphics g, LiveSplitState state, float height, Region clipRegion)
     {
-        var oldClip = g.Clip;
-        var oldMatrix = g.Transform;
-        var oldMode = g.SmoothingMode;
+        Region oldClip = g.Clip;
+        System.Drawing.Drawing2D.Matrix oldMatrix = g.Transform;
+        System.Drawing.Drawing2D.SmoothingMode oldMode = g.SmoothingMode;
         g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.Default;
         g.Clip = new Region();
         Line.LineColor = CurrentColor;
-        var scale = g.Transform.Elements.First();
-        var newWidth = Math.Max((int)((Settings.IndicatorWidth * scale) + 0.5f), 1) / scale;
+        float scale = g.Transform.Elements.First();
+        float newWidth = Math.Max((int)((Settings.IndicatorWidth * scale) + 0.5f), 1) / scale;
         g.TranslateTransform((Settings.IndicatorWidth - newWidth) / 2f, 0);
         Line.HorizontalWidth = newWidth;
         Line.DrawHorizontal(g, state, height, clipRegion);
