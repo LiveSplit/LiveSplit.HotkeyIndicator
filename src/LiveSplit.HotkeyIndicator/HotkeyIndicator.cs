@@ -49,7 +49,7 @@ public class HotkeyIndicator : IComponent
         g.Clip = new Region();
         Line.LineColor = CurrentColor;
         var scale = g.Transform.Elements.First();
-        var newHeight = Math.Max((int)(Settings.IndicatorHeight * scale + 0.5f), 1) / scale;
+        var newHeight = Math.Max((int)((Settings.IndicatorHeight * scale) + 0.5f), 1) / scale;
         Line.VerticalHeight = newHeight;
         g.TranslateTransform(0, (Settings.IndicatorHeight - newHeight) / 2f);
         Line.DrawVertical(g, state, width, clipRegion);
@@ -67,7 +67,7 @@ public class HotkeyIndicator : IComponent
         g.Clip = new Region();
         Line.LineColor = CurrentColor;
         var scale = g.Transform.Elements.First();
-        var newWidth = Math.Max((int)(Settings.IndicatorWidth * scale + 0.5f), 1) / scale;
+        var newWidth = Math.Max((int)((Settings.IndicatorWidth * scale) + 0.5f), 1) / scale;
         g.TranslateTransform((Settings.IndicatorWidth - newWidth) / 2f, 0);
         Line.HorizontalWidth = newWidth;
         Line.DrawHorizontal(g, state, height, clipRegion);
@@ -89,12 +89,10 @@ public class HotkeyIndicator : IComponent
         Settings.SetSettings(settings);
     }
 
-
     public System.Xml.XmlNode GetSettings(System.Xml.XmlDocument document)
     {
         return Settings.GetSettings(document);
     }
-
 
     public IDictionary<string, Action> ContextMenuControls => null;
 
@@ -106,7 +104,9 @@ public class HotkeyIndicator : IComponent
         Cache["IndicatorColor"] = CurrentColor.ToArgb();
 
         if (invalidator != null && Cache.HasChanged)
+        {
             invalidator.Invalidate(0, 0, width, height);
+        }
     }
 
     public void Dispose()
