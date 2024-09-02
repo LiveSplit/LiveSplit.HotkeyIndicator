@@ -113,5 +113,8 @@ public class HotkeyIndicator : IComponent
     {
     }
 
-    public int GetSettingsHashCode() => Settings.GetSettingsHashCode();
+    public int GetSettingsHashCode()
+    {
+        return Settings.GetSettingsHashCode();
+    }
 }

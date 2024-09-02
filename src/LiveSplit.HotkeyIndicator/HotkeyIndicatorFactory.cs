@@ -15,7 +15,10 @@ public class HotkeyIndicatorFactory : IComponentFactory
 
     public ComponentCategory Category => ComponentCategory.Other;
 
-    public IComponent Create(LiveSplitState state) => new HotkeyIndicator();
+    public IComponent Create(LiveSplitState state)
+    {
+        return new HotkeyIndicator();
+    }
 
     public string UpdateName => ComponentName;
 
