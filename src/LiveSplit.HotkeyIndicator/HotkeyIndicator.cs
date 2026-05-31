@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Windows.Forms;
-
-using LiveSplit.Model;
+﻿using LiveSplit.Model;
 using LiveSplit.UI;
 using LiveSplit.UI.Components;
+using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace LiveSplit;
 
@@ -48,7 +46,7 @@ public class HotkeyIndicator : IComponent
         g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.Default;
         g.Clip = new Region();
         Line.LineColor = CurrentColor;
-        float scale = g.Transform.Elements.First();
+        float scale = g.Transform.Elements[0];
         float newHeight = Math.Max((int)((Settings.IndicatorHeight * scale) + 0.5f), 1) / scale;
         Line.VerticalHeight = newHeight;
         g.TranslateTransform(0, (Settings.IndicatorHeight - newHeight) / 2f);
@@ -66,7 +64,7 @@ public class HotkeyIndicator : IComponent
         g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.Default;
         g.Clip = new Region();
         Line.LineColor = CurrentColor;
-        float scale = g.Transform.Elements.First();
+        float scale = g.Transform.Elements[0];
         float newWidth = Math.Max((int)((Settings.IndicatorWidth * scale) + 0.5f), 1) / scale;
         g.TranslateTransform((Settings.IndicatorWidth - newWidth) / 2f, 0);
         Line.HorizontalWidth = newWidth;
